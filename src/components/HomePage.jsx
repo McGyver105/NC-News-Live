@@ -5,8 +5,10 @@ import ListOfTopics from './ListOfTopics';
 const HomePage = () => {
     return (
         <>
-            <ArticleList />
-            <ListOfTopics />
+            <div className="homepage">
+                <ArticleList />
+                <ListOfTopics />
+            </div>
         </>
     );
 };
