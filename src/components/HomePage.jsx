@@ -1,6 +1,7 @@
 import React from 'react';
 import ArticleList from './ArticleList';
 import ListOfTopics from './ListOfTopics';
+import '../Frontpage.css';
 
 const HomePage = () => {
     return (

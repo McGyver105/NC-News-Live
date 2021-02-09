@@ -1,0 +1,163 @@
+.homepage {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 10fr;
+}
+
+.App__ArticleList {
+  border: 2px tomato solid;
+  margin: 0px;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.App__ListOfTopics {
+  margin: 0px;
+  grid-column: 1;
+  grid-row: 1;
+  border: 2px tomato solid;
+}
+
+.ListOfTopics__list {
+  padding: 0px;
+  border: 2px purple solid;
+}
+
+.ListOfTopics__item {
+  list-style: none;
+  padding: 0px;
+  display: inline;
+}
+
+.ArticleList__ul {
+  padding: 0px;
+}
+
+.ArticleSummary__li {
+  border: 2px black solid;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 60px 1fr 2fr 1fr;
+  height: fit-content;
+}
+
+.ArticleSummary__author {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  text-align: left;
+  margin: 5px;
+}
+
+.ArticleSumary__title {
+  grid-column: 1;
+  grid-row: 2;
+  text-align: left;
+  margin: 5px;
+}
+
+.ArticleSummary__preview {
+  grid-column: 1;
+  grid-row: 3;
+  text-align: left;
+  margin: 5px;
+}
+
+.ArticleSummary__linkToArticle {
+  grid-column: 1;
+  grid-row: 4;
+  text-align: left;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.ArticleSummary__comment_count {
+  grid-column: 2;
+  grid-row: 4;
+  text-align: right;
+  margin: 5px;
+  font-size: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+  .homepage {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .App__ArticleList {
+    border: 2px tomato solid;
+    margin: 0px;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .App__ListOfTopics {
+    margin: 0px;
+    grid-column: 2;
+    grid-row: 1;
+    border: 2px tomato solid;
+  }
+
+  .ListOfTopics__list {
+    padding: 0px;
+    border: 2px purple solid;
+  }
+
+  .ListOfTopics__item {
+    list-style: none;
+    padding: 0px;
+    display: inline;
+  }
+
+  .ArticleList__ul {
+    padding: 0px;
+  }
+
+  .ArticleSummary__li {
+    border: 2px black solid;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 60px 1fr 3fr 1fr;
+    height: fit-content;
+  }
+
+  .ArticleSummary__author {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    text-align: left;
+    margin: 5px;
+  }
+
+  .ArticleSumary__title {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+    margin: 5px;
+  }
+
+  .ArticleSummary__preview {
+    grid-column: 1;
+    grid-row: 3;
+    text-align: left;
+    margin: 5px;
+  }
+
+  .ArticleSummary__linkToArticle {
+    grid-column: 1;
+    grid-row: 4;
+    text-align: left;
+    margin: 5px;
+    font-size: 15px;
+  }
+
+  .ArticleSummary__comment_count {
+    grid-column: 2;
+    grid-row: 4;
+    text-align: right;
+    margin: 5px;
+    font-size: 15px;
+  }
+}

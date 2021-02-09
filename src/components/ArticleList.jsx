@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from './api';
 import ArticleSummary from './ArticleSummary'
+import '../Frontpage.css'
 
 class ArticleList extends Component {
 
