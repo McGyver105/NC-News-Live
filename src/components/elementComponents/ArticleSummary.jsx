@@ -1,6 +1,6 @@
 import { Link } from '@reach/router';
 import React from 'react';
-import '../App.css'
+import '../../App.css'
 
 const ArticleSummary = (props) => {
     const { author, created_at, title, body, comment_count } = props.article

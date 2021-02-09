@@ -1,9 +1,9 @@
 import './App.css';
-import HomePage from './components/HomePage';
-import Title from './components/Title';
-import { Link, Router } from '@reach/router'
-import TopicsPage from './components/TopicsPage';
-import SingleArticlePage from './components/SingleArticlePage';
+import { Router } from '@reach/router'
+import HomePage from './components/pageComponents/HomePage';
+import Title from './components/elementComponents/Title';
+import TopicsPage from './components/pageComponents/TopicsPage';
+import SingleArticlePage from './components/pageComponents/SingleArticlePage';
 
 function App() {
   return (
