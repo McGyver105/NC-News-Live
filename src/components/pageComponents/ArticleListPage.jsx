@@ -2,32 +2,44 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import ArticleSummary from '../elementComponents/ArticleSummary'
 import '../../Frontpage.css'
+import DropDownList from '../elementComponents/DropDownList';
 
 class ArticleList extends Component {
 
     state = {
         articles: [],
         isLoading: true,
-        sort_by: '',
-        sorting: false
+        sort_by: 'created_at',
+        sorting: false,
+        filter: this.props.filter,
+        filtering: this.props.filtering
     }
 
     componentDidMount () {
-        api.fetchArticles(this.state.sort_by)
+        api.fetchArticles()
             .then((articles) => {
                 this.setState(() => {
-                    return { "articles": articles, isLoading: false };
+                    return { "articles": articles, isLoading: false, filter: this.props.topic };
                 });
         })
     }
 
     componentDidUpdate () {
-        if (this.state.sorting) {
-            api.fetchSortedArticles(this.state.sort_by)
+        const { sort_by, filter, sorting, filtering } = this.state;
+        if (sorting) {
+            api.fetchSortedArticles(sort_by, filter)
                 .then((articles) => {
                     this.setState(() => {
-                    return { "articles": articles, isLoading: false, sorting: false };
+                        return { "articles": articles, isLoading: false, sorting: false };
+                    });
                 })
+        }
+        if (filtering) {
+            api.fetchSortedArticles(sort_by, filter)
+                .then((articles) => {
+                    this.setState(() => {
+                        return { "articles": articles, isLoading: false, filtering: false };
+                    });
             })
         }
     }
@@ -38,22 +50,16 @@ class ArticleList extends Component {
                 {this.state.isLoading ? <p>Loading...</p> :
                     <>
                         <div className="App__ArticleList">
-                            <p>List of Articles</p>
-                            <form >
-                                <label>Sort by
-                                 <select onChange={this.handleSort}>
-                                        <option value="all">Recommended</option>
-                                        <option value="author">Author</option>
-                                        <option value="created_at">Created At</option>
-                                        <option value="topic">Topic</option>
-                                 </select>
-                                </label>
-                            </form>
-                            <ul className="ArticleList__ul">
-                                {this.state.articles.map((article) => {
-                                    return <ArticleSummary key={article.article_id} article={article} />;
-                                })}
-                            </ul>
+                            <header className="ArticleList__header">
+                                <p className="header__title">List of Articles</p>
+                                <DropDownList handleSort={this.handleSort} />
+                            </header>
+                            {this.state.articles.length === 0 ? <p>No articles found</p> :
+                                <ul className="ArticleList__ul">
+                                    {this.state.articles.map((article) => {
+                                        return <ArticleSummary key={article.article_id} article={article} />;
+                                    })}
+                                </ul>}
                         </div>
                     </>
                 }
