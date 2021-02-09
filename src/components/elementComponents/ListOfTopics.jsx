@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api'
 import EachTopic from './EachTopic';
 import '../../Frontpage.css';
+import LoadingScreen from './LoadingScreen';
 
 class ListOfTopics extends Component {
     state = {
@@ -19,7 +20,7 @@ class ListOfTopics extends Component {
     
     render () {
         return (
-            <>{this.state.isLoading ? <p>Loading...</p>
+            <>{this.state.isLoading ? <LoadingScreen/>
                 :
                 <div className="App__ListOfTopics">
                     <p>List of topics</p>

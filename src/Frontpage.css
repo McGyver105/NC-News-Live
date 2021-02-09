@@ -94,6 +94,14 @@
   font-size: 15px;
 }
 
+.nyan {
+  height: 40px;
+}
+
+.FullArticle__Thumb {
+  height: 20px;
+}
+
 @media only screen and (min-width: 768px) {
   .homepage {
     height: 100vh;
@@ -174,5 +182,9 @@
     text-align: right;
     margin: 5px;
     font-size: 15px;
+  }
+
+  .nyan {
+    height: 40px;
   }
 }

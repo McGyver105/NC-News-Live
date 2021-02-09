@@ -6,7 +6,7 @@ const TopicsPage = (props) => {
     console.dir(props)
     return (
         <>
-            <Link to="/">
+            <Link to="/nc-news-st">
                 <h4>Home</h4>
             </Link>
             <p>Topic: {props.topic}

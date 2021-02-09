@@ -24,3 +24,27 @@ export const fetchSortedArticles = (sort_by, topicFilter = undefined) => {
             return articles;
     })
 }
+
+export const fetchOneArticle = (article_id) => {
+    return request.get(`/articles/${article_id}`)
+        .then(({ data: { article } }) => {
+            return article;
+    })
+}
+
+export const voteUpArticle = (article_id, votes) => {
+    return request.patch(`/articles/${article_id}`,
+        {
+            inc_votes: votes
+        }
+    );
+}
+
+export const VoteDownArticle = (article_id, votes) => {
+    console.log(votes)
+    return request.patch(`/articles/${article_id}`,
+        {
+            inc_votes: votes
+        }
+    )
+}

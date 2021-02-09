@@ -3,6 +3,7 @@ import * as api from '../api';
 import ArticleSummary from '../elementComponents/ArticleSummary'
 import '../../Frontpage.css'
 import DropDownList from '../elementComponents/DropDownList';
+import LoadingScreen from '../elementComponents/LoadingScreen';
 
 class ArticleList extends Component {
 
@@ -47,7 +48,8 @@ class ArticleList extends Component {
     render () {
         return (
             <>
-                {this.state.isLoading ? <p>Loading...</p> :
+                {this.state.isLoading ? <LoadingScreen/>
+                    :
                     <>
                         <div className="App__ArticleList">
                             <header className="ArticleList__header">

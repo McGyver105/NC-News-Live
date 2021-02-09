@@ -13,7 +13,7 @@ function App() {
         <HomePage path="/"/>
         <HomePage path="/nc-news-st"/>
         <TopicsPage path="/nc-news-st/topics/:topic" />
-        <SingleArticlePage path="nc-news-st/articles/:articleTitle"/>
+        <SingleArticlePage path="nc-news-st/articles/:article_id"/>
       </Router>
     </div>
   );
