@@ -2,6 +2,7 @@ import React from 'react';
 import ArticleList from './ArticleList';
 import ListOfTopics from './ListOfTopics';
 import '../Frontpage.css';
+import { Link } from '@reach/router';
 
 const HomePage = () => {
     return (

@@ -1,3 +1,4 @@
+import { Link } from '@reach/router';
 import React from 'react';
 import '../App.css'
 
@@ -8,12 +9,17 @@ const ArticleSummary = (props) => {
     return (
         <li className="ArticleSummary__li">
             <p className="ArticleSummary__author">Author: {author}. {`Created: ${created_at.slice(0, 10)} at ${created_at.slice(11, 19)}`}</p>
-            <p className="ArticleSumary__title">{title}</p>
+            <Link to={`/nc-news-st/articles/${title}`}>
+                <p className="ArticleSumary__title">{title}</p>
+            </Link>
             <p className="ArticleSummary__preview">{preview}</p>
-            <p className="ArticleSummary__linkToArticle">Click to view article</p>
-            <p className="ArticleSummary__comment_count">Comments: {comment_count}</p>
+            <Link to={`/nc-news-st/articles/${title}`} className="ArticleSummary__linkToArticle">
+                <p >Click to view article</p>
+            </Link>
+            <p
+                className="ArticleSummary__comment_count">Comments: {comment_count}</p>
         </li>
-    );  
+    );
 };
 
 export default ArticleSummary;
