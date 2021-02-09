@@ -44,7 +44,7 @@ class SingleArticlePage extends Component {
         const { liked, disliked } = this.state;
         let votes = 1;
         if (disliked[article_id]) votes = 2;
-        if (!liked[article_id]){
+        if (!liked[article_id]) {
             console.log('yay')
         api.voteUpArticle(article_id, votes)
             .then(({ data: { article } }) => {
