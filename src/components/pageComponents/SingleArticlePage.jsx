@@ -7,17 +7,19 @@ import * as api from '../api'
 class SingleArticlePage extends Component {
 
     state = {
+        article: {},
         article_id: this.props.article_id,
         isLoading: true,
-        liked: {},
-        disliked: {}
+        user: 'name',
+        liked: {'jessjelly': false},
+        disliked: {'jessjelly': false}
     }
 
     componentDidMount () {
         api.fetchOneArticle(this.props.article_id)
             .then((article) => {
                 this.setState(() => {
-                    return {article: article, isLoading: false}
+                    return {article: article, isLoading: false, user: this.props.user}
                 })
             })
     }
@@ -41,20 +43,30 @@ class SingleArticlePage extends Component {
     }
 
     handleLike = (article_id) => {
-        const { liked, disliked } = this.state;
+        const { liked, disliked, user } = this.state;
         let votes = 1;
-        if (disliked[article_id]) votes = 2;
-        if (!liked[article_id]) {
-            console.log('yay', votes)
+        if (disliked[user][article_id]) votes = 2;
+        if (!liked[user][article_id]) {
         api.voteOnArticle(article_id, votes)
             .then(({ data: { article } }) => {
                 this.setState((current) => {
                     return {
                         ...current.liked,
-                        liked: { [article_id]: true },
+                        liked: {
+                            ...current.liked[user],
+                            [user]: {
+                                [article_id]: true
+                            }
+                        },
                         ...current.disliked,
-                        disliked: { [article_id]: false },
-                        article: { ...current.article, votes: article.votes }
+                        disliked: {
+                            ...current.liked[user],
+                            [user]: { [article_id]: false }
+                        },
+                        article: {
+                            ...current.article,
+                            votes: article.votes
+                        }
                     };
                 });
             });
@@ -62,40 +74,64 @@ class SingleArticlePage extends Component {
     }
 
     handleNoComments = (article_id) => {
-        const { liked, disliked } = this.state;
+        const { liked, disliked, user } = this.state;
         let votes = 0;
-        if (liked[article_id]) votes = -1;
-        if (disliked[article_id]) votes = 1;
-        console.log('no fixed opinion', votes)
+        if (liked[user][article_id]) votes = -1;
+        if (disliked[user][article_id]) votes = 1;
         api.voteOnArticle(article_id, votes)
             .then(({ data: { article } }) => {
                 this.setState((current) => {
                     return {
                         ...current.liked,
-                        liked: { [article_id]: false },
+                        liked: {
+                            ...current.liked[user],
+                            [user]: {
+                                [article_id]: false
+                            }
+                        },
                         ...current.disliked,
-                        disliked: { [article_id]: false },
-                        article: { ...current.article, votes: article.votes }
+                        disliked: {
+                            ...current.liked[user],
+                            [user]: {
+                                [article_id]: false
+                            }
+                        },
+                        article: {
+                            ...current.article,
+                            votes: article.votes
+                        }
                     };
                 });
         })
     }
 
     handleDislike = (article_id) => {
-        const { liked, disliked } = this.state;
+        const { liked, disliked, user } = this.state;
         let votes = -1;
-        if (liked[article_id]) votes = -2;
-        if (!disliked[article_id]){
-            console.log('boo', votes)
+        if (liked[user][article_id]) votes = -2;
+        if (!disliked[user][article_id]){
         api.voteOnArticle(article_id, votes)
             .then(({ data: { article } }) => {
                 this.setState((current) => {
                     return {
                         ...current.liked,
-                        liked: { [article_id]: false },
+                        liked: {
+                            ...current.liked[user],
+                            [user]: {
+                                [article_id]: false
+                            }
+                        },
                         ...current.disliked,
-                        disliked: { [article_id]: true },
-                        article: { ...current.article, votes: article.votes }
+                        disliked: {
+                            ...current.liked[user],
+                            [user]: {
+                                [article_id]: true
+                            }
+                        },
+                        article: {
+                            ...current.article,
+                            votes: article.votes
+                        }
                     };
                 });
             });

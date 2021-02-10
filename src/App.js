@@ -5,15 +5,17 @@ import Title from './components/elementComponents/Title';
 import TopicsPage from './components/pageComponents/TopicsPage';
 import SingleArticlePage from './components/pageComponents/SingleArticlePage';
 
-function App() {
+const user = 'jessjelly';
+
+function App () {
   return (
     <div className="App">
-      <Title />
+      <Title user={user}/>
       <Router>
         <HomePage path="/"/>
         <HomePage path="/nc-news-st"/>
         <TopicsPage path="/nc-news-st/topics/:topic" />
-        <SingleArticlePage path="nc-news-st/articles/:article_id"/>
+        <SingleArticlePage path="nc-news-st/articles/:article_id" user={user} />
       </Router>
     </div>
   );

@@ -12,4 +12,25 @@
 
 .App__title {
   border: 2px green solid;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-template-rows: 100%;
+}
+
+.App__name {
+  grid-column: 1;
+}
+
+.App__user {
+  grid-column: 2;
+  background-color: purple;
+  color: white;
+  font-size: 35px;
+  margin: 0px;
+  border-radius: 35px;
+  height: 40px;
+  width: 40px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
