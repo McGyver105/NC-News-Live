@@ -32,19 +32,10 @@ export const fetchOneArticle = (article_id) => {
     })
 }
 
-export const voteUpArticle = (article_id, votes) => {
+export const voteOnArticle = (article_id, votes) => {
     return request.patch(`/articles/${article_id}`,
         {
             inc_votes: votes
         }
     );
-}
-
-export const VoteDownArticle = (article_id, votes) => {
-    console.log(votes)
-    return request.patch(`/articles/${article_id}`,
-        {
-            inc_votes: votes
-        }
-    )
 }

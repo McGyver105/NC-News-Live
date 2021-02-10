@@ -33,7 +33,7 @@ class SingleArticlePage extends Component {
                             <h4>Home</h4>
                         </Link>
                         <p>Article: {article.title}</p>
-                        <FullArticle article={article} handleLike={this.handleLike} handleDislike={this.handleDislike}/>
+                        <FullArticle article={article} handleLike={this.handleLike} handleDislike={this.handleDislike} handleNoComments={this.handleNoComments}/>
                     </>
             }
             </>
@@ -45,8 +45,8 @@ class SingleArticlePage extends Component {
         let votes = 1;
         if (disliked[article_id]) votes = 2;
         if (!liked[article_id]) {
-            console.log('yay')
-        api.voteUpArticle(article_id, votes)
+            console.log('yay', votes)
+        api.voteOnArticle(article_id, votes)
             .then(({ data: { article } }) => {
                 this.setState((current) => {
                     return {
@@ -61,13 +61,33 @@ class SingleArticlePage extends Component {
         };
     }
 
+    handleNoComments = (article_id) => {
+        const { liked, disliked } = this.state;
+        let votes = 0;
+        if (liked[article_id]) votes = -1;
+        if (disliked[article_id]) votes = 1;
+        console.log('no fixed opinion', votes)
+        api.voteOnArticle(article_id, votes)
+            .then(({ data: { article } }) => {
+                this.setState((current) => {
+                    return {
+                        ...current.liked,
+                        liked: { [article_id]: false },
+                        ...current.disliked,
+                        disliked: { [article_id]: false },
+                        article: { ...current.article, votes: article.votes }
+                    };
+                });
+        })
+    }
+
     handleDislike = (article_id) => {
         const { liked, disliked } = this.state;
         let votes = -1;
         if (liked[article_id]) votes = -2;
         if (!disliked[article_id]){
-            console.log('boo')
-        api.VoteDownArticle(article_id, votes)
+            console.log('boo', votes)
+        api.voteOnArticle(article_id, votes)
             .then(({ data: { article } }) => {
                 this.setState((current) => {
                     return {
