@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import FullArticle from '../elementComponents/FullArticle';
 import LoadingScreen from '../elementComponents/LoadingScreen';
 import * as api from '../api'
+import ArticleComments from '../elementComponents/ArticleComments';
 
 class SingleArticlePage extends Component {
 
@@ -30,13 +31,17 @@ class SingleArticlePage extends Component {
                     :
                     <>
                         <Link to="/nc-news-st">
-                            <h4>Home</h4>
+                            <h4>Go Back</h4>
                         </Link>
                         <p>Article: {article.title}</p>
                         <FullArticle
                             id={this.props.article_id}
                             user={user}
                         />
+                        <p>Put post comments here</p>
+                        <ArticleComments
+                            article={article}
+                            user={user} />
                     </>
             }
             </>

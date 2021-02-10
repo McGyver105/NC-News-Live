@@ -7,7 +7,7 @@ const TopicsPage = (props) => {
     return (
         <>
             <Link to="/nc-news-st">
-                <h4>Home</h4>
+                <h4>Go back</h4>
             </Link>
             <p>Topic: {props.topic}
             </p>

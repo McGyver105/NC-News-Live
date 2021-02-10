@@ -1,9 +1,8 @@
 import * as api from '../api'
 import '../../Frontpage.css'
-
 import React, { Component } from 'react';
 import LoadingScreen from './LoadingScreen';
-import CommentsCounter from './CommentsCounter';
+import VotesCounter from './VotesCounter';
 
 class FullArticle extends Component {
 
@@ -30,7 +29,8 @@ class FullArticle extends Component {
                     <>
                         <p>Author: {article.author}</p>
                         <p>{article.body}</p>
-                        <CommentsCounter
+                        <VotesCounter
+                            type={"articles"}
                             votes={article.votes}
                             id={article.article_id}
                         />

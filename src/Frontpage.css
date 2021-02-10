@@ -94,6 +94,16 @@
   font-size: 15px;
 }
 
+.SingleArticle__comment {
+  border: 2px blue solid;
+}
+
+.SingleComment__commentList {
+  border: 2px lightgreen solid;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .nyan {
   height: 40px;
 }
@@ -202,6 +212,16 @@
 
   .FullArticle__voteButton[disabled] {
     background-color: lightgreen;
+  }
+
+  .SingleArticle__comment {
+    border: 2px blue solid;
+  }
+
+  .SingleComment__commentList {
+    border: 2px lightgreen solid;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .nyan {

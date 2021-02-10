@@ -32,10 +32,17 @@ export const fetchOneArticle = (article_id) => {
     })
 }
 
-export const voteOnArticle = (article_id, votes) => {
-    return request.patch(`/articles/${article_id}`,
+export const voteOnArticle = (article_id, votes, type) => {
+    return request.patch(`/${type}/${article_id}`,
         {
             inc_votes: votes
         }
     );
+}
+
+export const fetchCommentsForArticle = (article_id) => {
+    return request.get(`/articles/${article_id}/comments`)
+        .then(({ data: { comments } }) => {
+            return comments;
+        });
 }

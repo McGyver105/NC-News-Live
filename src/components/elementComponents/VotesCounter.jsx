@@ -8,7 +8,8 @@ class CommentsCounter extends Component {
         startingVotes: this.props.votes,
         voteChange: 0,
         likeDisabled: false,
-        dislikeDisabled: false
+        dislikeDisabled: false,
+        type: this.props.type
     }
 
     componentDidMount () {
@@ -58,7 +59,7 @@ class CommentsCounter extends Component {
     }
 
     handleClick = (voteIncrement) => {
-        const { id, voteChange } = this.state;
+        const { id, voteChange, type } = this.state;
         let votes = voteIncrement;
         if (voteChange >= 1 && voteIncrement === 1) votes = 0;
         if (voteChange <= -1 && voteIncrement === -1) votes = 0;
@@ -67,7 +68,7 @@ class CommentsCounter extends Component {
         this.setState((current) => {
             return { voteChange: current.voteChange + votes };
         });
-        api.voteOnArticle(id, votes)
+        api.voteOnArticle(id, votes, type)
             .then(() => {
                 localStorage.setItem(`articleVotes${id}`, JSON.stringify(this.state));
         })
