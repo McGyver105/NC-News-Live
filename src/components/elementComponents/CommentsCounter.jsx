@@ -11,8 +11,11 @@ class CommentsCounter extends Component {
         dislikeDisabled: false
     }
 
+    componentDidMount () {
+        this.fetchVotes();
+    }
+
     render () {
-        console.log(this.state.voteChange)
         const { startingVotes, voteChange } = this.state;
         return (
             <>
@@ -65,6 +68,19 @@ class CommentsCounter extends Component {
             return { voteChange: current.voteChange + votes };
         });
         api.voteOnArticle(id, votes)
+            .then(() => {
+                localStorage.setItem(`articleVotes${id}`, JSON.stringify(this.state));
+        })
+    }
+
+    fetchVotes = () => {
+        const { id } = this.state;
+        const storedVotes = JSON.parse(localStorage.getItem(`articleVotes${id}`))
+        if (storedVotes){
+            this.setState(() => {
+                return { voteChange: storedVotes.voteChange, startingVotes: storedVotes.startingVotes };
+            });
+        }
     }
 }
 
