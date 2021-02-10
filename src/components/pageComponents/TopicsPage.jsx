@@ -3,7 +3,6 @@ import React from 'react';
 import ArticleListPage from './ArticleListPage';
 
 const TopicsPage = (props) => {
-    console.dir(props)
     return (
         <>
             <Link to="/nc-news-st">

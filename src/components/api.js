@@ -46,3 +46,20 @@ export const fetchCommentsForArticle = (article_id) => {
             return comments;
         });
 }
+
+export const postComment = (id, user, commentStr) => {
+    return request.post(`/articles/${id}/comments`, { username: user, body: commentStr })
+        .then((comment) => {
+            return comment;
+    })
+}
+
+export const deleteComment = (comment_id) => {
+    return request.delete(`comments/${comment_id}`)
+}
+
+export const filterComments = (commentsArr, number) => {
+    return commentsArr.filter((comment) => {
+        return comment.comment_id !== number;
+    });
+}

@@ -9,7 +9,8 @@ class ArticleComments extends Component {
         article: this.props.article,
         user: this.props.user,
         isLoading: true,
-        showComments: false
+        hideComments: true,
+        posted: this.props.posted
     };
 
     componentDidMount () {
@@ -21,33 +22,45 @@ class ArticleComments extends Component {
                 });
         })
     }
+
+    componentDidUpdate () {
+        const { article_id } = this.state.article;
+        api.fetchCommentsForArticle(article_id)
+            .then((comments) => {
+                this.setState(() => {
+                    return { comments, isLoading: false };
+                });
+        })
+    }
+
     render () {
-        const { comments, isLoading, showComments } = this.state;
+        const { comments, isLoading, hideComments } = this.state;
         return (
             <>
                 {isLoading ? <LoadingScreen /> :
                     <>
                         <button onClick={this.showHideButton}>
-                            Show comments
+                            Show all comments
                             </button>
-                        {showComments ? <></> :
+                        {hideComments ? <></> :
                             <>
-                                <p>All comments:</p>
                                 <ul className="SingleComment__commentList">
-                                    {comments.map(({
-                                        author,
-                                        body,
-                                        comment_id,
-                                        created_at,
-                                        votes }) => {
-                                        return <SingleComment
-                                            author={author}
-                                            body={body}
-                                            created_at={created_at}
-                                            votes={votes}
-                                            comment_id={comment_id}
-                                            key={comment_id} />;
-                                    })}
+                                    {comments.length === 0 ? <p>No comments found</p> :
+                                        comments.map(({
+                                            author,
+                                            body,
+                                            comment_id,
+                                            created_at,
+                                            votes }) => {
+                                            return <SingleComment
+                                                author={author}
+                                                body={body}
+                                                created_at={created_at}
+                                                votes={votes}
+                                                comment_id={comment_id}
+                                                key={comment_id}
+                                                handleDelete={this.handleDelete}/>;
+                                        })}
                                 </ul>
                             </>}
                     </>}
@@ -56,9 +69,18 @@ class ArticleComments extends Component {
     }
 
     showHideButton = () => {
-        this.setState(({showComments}) => {
-            return { showComments: !showComments };
+        this.setState(({hideComments}) => {
+            return { hideComments: !hideComments };
         });
+    }
+
+    handleDelete = (comment_id) => {
+        api.deleteComment(comment_id)
+            .then(() => {
+                this.setState(() => {
+                    return {comments: api.filterComments(this.state.comments, comment_id)};
+                });
+            });
     }
 }
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import FullArticle from '../elementComponents/FullArticle';
 import LoadingScreen from '../elementComponents/LoadingScreen';
 import * as api from '../api'
-import ArticleComments from '../elementComponents/ArticleComments';
+import PostCommentToArticle from '../elementComponents/PostCommentToArticle';
 
 class SingleArticlePage extends Component {
 
@@ -38,10 +38,10 @@ class SingleArticlePage extends Component {
                             id={this.props.article_id}
                             user={user}
                         />
-                        <p>Put post comments here</p>
-                        <ArticleComments
-                            article={article}
-                            user={user} />
+                        <PostCommentToArticle
+                            id={this.props.article_id}
+                            user={user}
+                            article={article}/>
                     </>
             }
             </>
