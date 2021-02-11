@@ -4,6 +4,7 @@ import ArticleSummary from '../elementComponents/ArticleSummary'
 import '../../Frontpage.css'
 import DropDownList from '../elementComponents/DropDownList';
 import LoadingScreen from '../elementComponents/LoadingScreen';
+import ErrorHandler from '../ErrorHandling/ErrorHandler'
 
 class ArticleList extends Component {
 
@@ -13,7 +14,8 @@ class ArticleList extends Component {
         sort_by: 'created_at',
         sorting: false,
         filter: this.props.filter,
-        filtering: this.props.filtering
+        filtering: this.props.filtering,
+        errorFound: {found: false, msg: '', status: ''}
     }
 
     componentDidMount () {
@@ -22,7 +24,7 @@ class ArticleList extends Component {
                 this.setState(() => {
                     return { "articles": articles, isLoading: false, filter: this.props.topic };
                 });
-        })
+            })
     }
 
     componentDidUpdate () {
@@ -34,6 +36,11 @@ class ArticleList extends Component {
                         return { "articles": articles, isLoading: false, sorting: false };
                     });
                 })
+                .catch(({ response: { status, data: { msg } } }) => {
+                    this.setState(() => {
+                        return { errorFound: { found: true, msg, status: status }, filtering: false, sorting: false };
+                    });
+                });
         }
         if (filtering) {
             api.fetchSortedArticles(sort_by, filter)
@@ -41,11 +48,20 @@ class ArticleList extends Component {
                     this.setState(() => {
                         return { "articles": articles, isLoading: false, filtering: false };
                     });
-            })
+                })
+                .catch(({ response: { status, data: { msg } } }) => {
+                    this.setState(() => {
+                        return { errorFound: { found: true, msg, status: status }, filtering: false, sorting: false };
+                    });
+                });
         }
     }
 
     render () {
+        const { msg, status } = this.state.errorFound;
+        if (this.state.errorFound.found) {
+            return (<ErrorHandler msg={msg} status={status}/>)
+        }
         return (
             <>
                 {this.state.isLoading ? <LoadingScreen/>

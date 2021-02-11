@@ -4,6 +4,7 @@ import HomePage from './components/pageComponents/HomePage';
 import Title from './components/elementComponents/Title';
 import TopicsPage from './components/pageComponents/TopicsPage';
 import SingleArticlePage from './components/pageComponents/SingleArticlePage';
+import ErrorHandler from './components/ErrorHandling/ErrorHandler'
 
 const user = 'jessjelly';
 
@@ -16,6 +17,7 @@ function App () {
         <HomePage path="/nc-news-st"/>
         <TopicsPage path="/nc-news-st/topics/:topic" />
         <SingleArticlePage path="nc-news-st/articles/:article_id" user={user} />
+        <ErrorHandler default/>
       </Router>
     </div>
   );

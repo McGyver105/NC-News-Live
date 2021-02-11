@@ -15,7 +15,7 @@ class ListOfTopics extends Component {
             this.setState(() => {
                 return { "topics": topics, isLoading: false };
             });
-    })
+        })
     }
     
     render () {
