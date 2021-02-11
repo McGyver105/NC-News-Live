@@ -94,6 +94,10 @@
   font-size: 15px;
 }
 
+.SingleArticle__CommentsSection {
+  border: 2px blue solid;
+}
+
 .SingleArticle__comment {
   border: 2px blue solid;
 }
@@ -118,6 +122,10 @@
 
 .FullArticle__voteButton[disabled] {
   background-color: lightgreen;
+}
+
+.FullArticle__votesCounter {
+  border: 2px solid red;
 }
 
 @media only screen and (min-width: 768px) {
@@ -222,6 +230,10 @@
     border: 2px lightgreen solid;
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .FullArticle__votesCounter {
+    border: 2px solid red;
   }
 
   .nyan {

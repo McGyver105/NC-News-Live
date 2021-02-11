@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api'
-import ArticleComments from './ArticleComments'
+import LoadingScreen from './LoadingScreen';
+import SingleComment from './SingleComment';
 
 class PostCommentToArticle extends Component {
 
@@ -8,39 +9,84 @@ class PostCommentToArticle extends Component {
         id: this.props.id,
         user: this.props.user,
         article: this.props.article,
-        hideInput: false,
+        hideInput: true,
         posted: false,
-        userComment: ''
+        userComment: '',
+        isLoading: true,
+        comments: {},
+        hideComments: true
+    }
+
+    componentDidMount () {
+        const { article_id } = this.state.article;
+        api.fetchCommentsForArticle(article_id)
+            .then((comments) => {
+                this.setState(() => {
+                    return { comments, isLoading: false };
+                });
+        })
     }
 
     componentDidUpdate () {
         if (this.state.posted) {
-            this.setState(() => {
-                return {posted: false}
-            })
-        }
+            console.log('updating')
+        const { article_id } = this.state.article;
+            api.fetchCommentsForArticle(article_id)
+                .then((comments) => {
+                    this.setState(() => {
+                        return { comments, posted: false };
+                    });
+                });
+        };
     }
 
     render () {
-        const { hideInput, user, article, posted } = this.state;
+        const { hideInput, isLoading, comments, hideComments } = this.state;
         return (
-            <div>
-                <button onClick={this.handleClick}>Click to post comment</button>
-                {hideInput ? <></> : 
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            <input onChange={this.handleTyping}
-                                type="text" placeholder="tell us what you think"
-                            ></input>
-                        </label>
-                        <button>Submit</button>
-                    </form>}
-                    <ArticleComments
-                    article={article}
-                    user={user}
-                    posted={posted}
-                    />
-            </div>
+            <>{isLoading ? <LoadingScreen/> :
+                <>
+                    <button onClick={this.handleClick}>Click to post comment</button>
+                    {hideInput ? <></> :
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                                <input onChange={this.handleTyping}
+                                    type="text" placeholder="tell us what you think"
+                                ></input>
+                            </label>
+                            <button>Submit</button>
+                        </form>}
+                    <p>User comments</p>
+                    <>
+                        <button onClick={this.showHideButton}>
+                            Show all comments
+                            </button>
+                        {hideComments ? <></> :
+                            <>
+                                <ul className="SingleComment__commentList"
+                                id="SingleComment__commentList">
+                                    {comments.length === 0 ? <p>No comments found</p> :
+                                        comments.map(({
+                                            author,
+                                            body,
+                                            comment_id,
+                                            created_at,
+                                            votes }) => {
+                                            return <SingleComment
+                                                author={author}
+                                                body={body}
+                                                created_at={created_at}
+                                                votes={votes}
+                                                comment_id={comment_id}
+                                                key={comment_id}
+                                                handleDelete={this.handleDelete}/>;
+                                        })}
+                                </ul>
+                            </>}
+                    </>
+
+
+                </>}
+            </>
         );
     }
 
@@ -55,7 +101,9 @@ class PostCommentToArticle extends Component {
         event.preventDefault();
         api.postComment(id, user, userComment)
             .then(() => {
-                return { posted: true };
+                this.setState(() => {
+                    return { posted: true, hideComments: false }
+                })
         })
     }
 
@@ -64,7 +112,21 @@ class PostCommentToArticle extends Component {
             return {userComment: event.target.value}
         })
     }
+
+    handleDelete = (comment_id) => {
+        api.deleteComment(comment_id)
+            .then(() => {
+                this.setState(() => {
+                    return {comments: api.filterComments(this.state.comments, comment_id)};
+                });
+            });
+    }
     
+    showHideButton = () => {
+        this.setState(({hideComments}) => {
+            return { hideComments: !hideComments };
+        });
+    }
 }
 
 export default PostCommentToArticle;

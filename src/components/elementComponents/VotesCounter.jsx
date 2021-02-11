@@ -20,7 +20,7 @@ class CommentsCounter extends Component {
         const { startingVotes, voteChange } = this.state;
         return (
             <>
-                <p>{startingVotes + voteChange}</p>
+                <p>Votes: {startingVotes + voteChange}</p>
                 <button
                     disabled={voteChange === 1}
                     onClick={(() => {

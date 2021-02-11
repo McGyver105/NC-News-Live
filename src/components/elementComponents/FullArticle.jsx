@@ -29,11 +29,14 @@ class FullArticle extends Component {
                     <>
                         <p>Author: {article.author}</p>
                         <p>{article.body}</p>
+                        <section
+                        className="FullArticle__votesCounter">
                         <VotesCounter
                             type={"articles"}
                             votes={article.votes}
                             id={article.article_id}
                         />
+                        </section>
                     </>}
                 </>
         );

@@ -38,10 +38,12 @@ class SingleArticlePage extends Component {
                             id={this.props.article_id}
                             user={user}
                         />
+                        <section className="SingleArticle__CommentsSection">
                         <PostCommentToArticle
                             id={this.props.article_id}
                             user={user}
                             article={article}/>
+                        </section>
                     </>
             }
             </>

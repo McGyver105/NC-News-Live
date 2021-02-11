@@ -23,7 +23,7 @@ class ListOfTopics extends Component {
             <>{this.state.isLoading ? <LoadingScreen/>
                 :
                 <div className="App__ListOfTopics">
-                    <p>List of topics</p>
+                    <p>Featured Topics</p>
                     <ul className="ListOfTopics__list">
                         {this.state.topics.map((topic) => {
                             return <EachTopic key={topic.slug} topic={topic} />

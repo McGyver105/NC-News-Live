@@ -3,7 +3,7 @@ import React from 'react';
 import '../../App.css'
 
 const ArticleSummary = (props) => {
-    const { author, created_at, title, body, comment_count, topic, article_id } = props.article
+    const { author, created_at, title, body, comment_count, article_id } = props.article
     let preview = body;
     if (body.length > 70) preview = body.slice(0, 70) + '...';
     return (
@@ -16,7 +16,6 @@ const ArticleSummary = (props) => {
             <Link to={`/nc-news-st/articles/${article_id}`} className="ArticleSummary__linkToArticle">
                 <p >Click to view article</p>
             </Link>
-            <p>{topic}</p>
             <p
                 className="ArticleSummary__comment_count">Comments: {comment_count}</p>
         </li>

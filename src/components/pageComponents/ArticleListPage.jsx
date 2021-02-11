@@ -53,7 +53,7 @@ class ArticleList extends Component {
                     <>
                         <div className="App__ArticleList">
                             <header className="ArticleList__header">
-                                <p className="header__title">List of Articles</p>
+                                <p className="header__title">NC Articles</p>
                                 <DropDownList handleSort={this.handleSort} />
                             </header>
                             {this.state.articles.length === 0 ? <p>No articles found</p> :
