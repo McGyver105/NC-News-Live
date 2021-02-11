@@ -8,7 +8,8 @@ const SingleComment = ({
     comment_id,
     created_at,
     votes,
-    handleDelete
+    handleDelete,
+    user
 }) => {
     return (
         <section className="SingleArticle__comment">
@@ -18,9 +19,11 @@ const SingleComment = ({
                 type={"comments"}
                 votes={votes}
                 id={comment_id} />
-            <button onClick={() => {
-                handleDelete(comment_id)
-            }}>remove comment</button>
+            { author === user ?
+                <button onClick={() => {
+                    handleDelete(comment_id);
+                }}>remove comment</button>
+                : <></>}
         </section>
     );
 };

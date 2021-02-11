@@ -48,10 +48,15 @@ export const fetchCommentsForArticle = (article_id) => {
 }
 
 export const postComment = (id, user, commentStr) => {
-    return request.post(`/articles/${id}/comments`, { username: user, body: commentStr })
-        .then((comment) => {
-            return comment;
-    })
+    const errMsg = 'cannot submit an empty comment';
+    if (commentStr === '') {
+        return Promise.reject(errMsg);
+    } else {
+        return request.post(`/articles/${id}/comments`, { username: user, body: commentStr })
+            .then((comment) => {
+                return comment;
+        })
+    }
 }
 
 export const deleteComment = (comment_id) => {

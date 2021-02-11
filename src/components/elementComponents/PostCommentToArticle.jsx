@@ -11,10 +11,12 @@ class PostCommentToArticle extends Component {
         article: this.props.article,
         hideInput: true,
         posted: false,
+        posting: false,
         userComment: '',
         isLoading: true,
         comments: {},
-        hideComments: true
+        hideComments: true,
+        errorFound: { found: false },
     }
 
     componentDidMount () {
@@ -29,7 +31,6 @@ class PostCommentToArticle extends Component {
 
     componentDidUpdate () {
         if (this.state.posted) {
-            console.log('updating')
         const { article_id } = this.state.article;
             api.fetchCommentsForArticle(article_id)
                 .then((comments) => {
@@ -41,7 +42,7 @@ class PostCommentToArticle extends Component {
     }
 
     render () {
-        const { hideInput, isLoading, comments, hideComments } = this.state;
+        const { hideInput, isLoading, comments, hideComments, user, posting, errorFound: { found, msg } } = this.state;
         return (
             <>{isLoading ? <LoadingScreen/> :
                 <>
@@ -54,7 +55,17 @@ class PostCommentToArticle extends Component {
                                 ></input>
                             </label>
                             <button>Submit</button>
-                        </form>}
+                            {found ? <p>{msg}</p> : <></>}
+                        </form>
+                    }
+                    {
+                    posting ?
+                        <>
+                            <p>posting comment</p>
+                        </>
+                            :
+                        <></>
+                    }
                     <p>User comments</p>
                     <>
                         <button onClick={this.showHideButton}>
@@ -78,6 +89,7 @@ class PostCommentToArticle extends Component {
                                                 votes={votes}
                                                 comment_id={comment_id}
                                                 key={comment_id}
+                                                user={user}
                                                 handleDelete={this.handleDelete}/>;
                                         })}
                                 </ul>
@@ -99,12 +111,20 @@ class PostCommentToArticle extends Component {
     handleSubmit = (event) => {
         const { id, user, userComment } = this.state;
         event.preventDefault();
+        this.setState(() => {
+            return {posting: true}
+        })
         api.postComment(id, user, userComment)
             .then(() => {
                 this.setState(() => {
-                    return { posted: true, hideComments: false }
-                })
-        })
+                    return { posted: true, posting : false, hideComments: false };
+                });
+            })
+            .catch((err) => {
+                this.setState(() => {
+                    return { errorFound: { found: true, msg: err } };
+                });
+            });
     }
 
     handleTyping = (event) => {
@@ -114,12 +134,10 @@ class PostCommentToArticle extends Component {
     }
 
     handleDelete = (comment_id) => {
+        this.setState(() => {
+            return {comments: api.filterComments(this.state.comments, comment_id)};
+        });
         api.deleteComment(comment_id)
-            .then(() => {
-                this.setState(() => {
-                    return {comments: api.filterComments(this.state.comments, comment_id)};
-                });
-            });
     }
     
     showHideButton = () => {
