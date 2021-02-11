@@ -1,0 +1,29 @@
+.SingleArticle__CommentsSection {
+  border: 2px blue solid;
+}
+
+.SingleArticle__comment {
+  border: 2px blue solid;
+}
+
+.SingleComment__commentList {
+  border: 2px lightgreen solid;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.FullArticle__votesCounter {
+  border: 2px solid red;
+}
+
+.FullArticle__Thumb {
+  height: 20px;
+}
+
+.FullArticle__voteButton {
+  background-color: white;
+}
+
+.FullArticle__voteButton[disabled] {
+  background-color: lightgreen;
+}

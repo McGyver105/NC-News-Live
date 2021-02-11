@@ -1,0 +1,17 @@
+.App__ListOfTopics {
+  margin: 0px;
+  grid-column: 1;
+  grid-row: 1;
+  border: 2px tomato solid;
+}
+
+.ListOfTopics__list {
+  padding: 0px;
+  border: 2px purple solid;
+}
+
+.ListOfTopics__item {
+  list-style: none;
+  padding: 0px;
+  display: inline;
+}

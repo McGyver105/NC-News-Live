@@ -7,8 +7,8 @@ const HomePage = () => {
     return (
         <>
             <div className="homepage">
-                <ArticleListPage />
                 <ListOfTopics />
+                <ArticleListPage />
             </div>
         </>
     );

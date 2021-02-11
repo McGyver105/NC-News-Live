@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import ArticleSummary from '../elementComponents/ArticleSummary'
 import '../../Frontpage.css'
+import './ArticleListPage.css'
 import DropDownList from '../elementComponents/DropDownList';
 import LoadingScreen from '../elementComponents/LoadingScreen';
 import ErrorHandler from '../ErrorHandling/ErrorHandler'
@@ -58,6 +59,13 @@ class ArticleList extends Component {
     }
 
     render () {
+        // here I want to have a page number component
+        // I'll pass it the total number of articles and it'll display the page numbers with links on them
+        // maybe I should have a left and right arrow (conditional on being at the end of the set)
+        // and a drop down menu for going to specific pages
+        // each one will have an onclick action that sets the state with a limit and offset value
+        // that then triggers the component did update to fetchSorted Articles using the limit and offset values
+        // I'll want to make sure that it is set to limit = 10 and offset = 0 as default
         const { msg, status } = this.state.errorFound;
         if (this.state.errorFound.found) {
             return (<ErrorHandler msg={msg} status={status}/>)

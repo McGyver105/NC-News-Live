@@ -1,5 +1,6 @@
 import * as api from '../api'
 import '../../Frontpage.css'
+import '../pageComponents/SingleArticlePage.css'
 import React, { Component } from 'react';
 import LoadingScreen from './LoadingScreen';
 import VotesCounter from './VotesCounter';

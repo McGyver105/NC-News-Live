@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api'
 import EachTopic from './EachTopic';
 import '../../Frontpage.css';
+import './ListOfTopics.css'
 import LoadingScreen from './LoadingScreen';
 
 class ListOfTopics extends Component {
