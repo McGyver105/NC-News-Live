@@ -29,8 +29,10 @@ class FullArticle extends Component {
                 {isLoading ? <LoadingScreen /> :
                     <>
                         <main className="FullArticle__mainArticle">
-                            <p>Author: {article.author}</p>
-                            <p>{article.body}</p>
+                            <p className="FullArticle__Author">Author: {article.author}</p>
+                            <p className="FullArticle__ArticleText">
+                                {article.body}
+                            </p>
                             <section
                                 className="FullArticle__votesCounter">
                                 <VotesCounter

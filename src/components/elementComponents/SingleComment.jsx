@@ -13,8 +13,9 @@ const SingleComment = ({
 }) => {
     return (
         <section className="SingleArticle__comment">
-            <p>Written by {author} at {created_at}</p>
-            <p>{body}</p>
+            <p
+                className="SingleComment__author">Author: {author} at {created_at}</p>
+            <p className="SingleComment__body">{body}</p>
             <VotesCounter
                 type={"comments"}
                 votes={votes}

@@ -1,19 +1,47 @@
 .App__ListOfTopics {
-  margin: 0px;
+  background-color: #ead7d7;
+  margin: 10px;
   grid-column: 1;
   grid-row: 1;
   border: 2px tomato solid;
+  border-radius: 10px;
 }
 
 .ListOfTopics__list {
   padding: 0px;
-  border: 2px purple solid;
+}
+
+.App_FeaturedTopics {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .ListOfTopics__item {
   list-style: none;
   padding: 0px;
   display: inline;
+}
+
+.ListOfTopics__description {
+  background-color: #b49fcc;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.TopicsPage__ChosenPage {
+  background-color: #b49fcc;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 35px;
+  font-style: normal;
 }
 
 @media only screen and (min-width: 768px) {

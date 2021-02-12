@@ -50,7 +50,9 @@ class SingleArticlePage extends Component {
                         <Link to="/nc-news-st">
                             <h4>Go Back</h4>
                         </Link>
-                        <p>Article: {article.title}</p>
+                        <p className="SingleArticlePage__title">
+                            Article: {article.title}
+                        </p>
                         <FullArticle
                             id={this.props.article_id}
                             user={user}

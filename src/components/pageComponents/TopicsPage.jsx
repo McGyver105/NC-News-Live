@@ -8,7 +8,7 @@ const TopicsPage = (props) => {
             <Link to="/nc-news-st">
                 <h4>Go back</h4>
             </Link>
-            <p>Topic: {props.topic}
+            <p className="TopicsPage__ChosenPage">Articles about: {props.topic}!
             </p>
             <ArticleListPage topic={props.topic} filtering={true} />
         </>

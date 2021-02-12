@@ -14,10 +14,9 @@ const ArticleSummary = (props) => {
             </Link>
             <p className="ArticleSummary__preview">{preview}</p>
             <Link to={`/nc-news-st/articles/${article_id}`} className="ArticleSummary__linkToArticle">
-                <p >Click to view article</p>
+                <p className="LinktoArticle__text">would you like to know more?</p>
             </Link>
-            <p
-                className="ArticleSummary__comment_count">Comments: {comment_count}</p>
+           
         </li>
     );
 };

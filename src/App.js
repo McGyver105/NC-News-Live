@@ -67,7 +67,7 @@ class App extends Component {
   userLogin = (event) => {
     event.preventDefault();
     const { usernameInput } = this.state;
-    const usernameRegex = /^[A-z]+[0-9]*$/;
+    const usernameRegex = /^[a-z]+[0-9]*$/;
     if (usernameRegex.test(usernameInput) === false) {
       this.setState(() => {
         return { invalidUsername: true };

@@ -1,23 +1,36 @@
 .App__ArticleList {
   border: 2px tomato solid;
+  border-radius: 10px;
   margin: 0px;
   grid-column: 1;
   grid-row: 2;
+  background-color: #ead7d7;
+  margin: 10px;
 }
 
 .ArticleList__header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 50px;
 }
 
 .header__title {
   grid-column: 1;
   align-self: center;
+  font-size: 25px;
+  font-style: italic;
+  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
 .header__dropdownlist {
   grid-column: 2;
   align-self: center;
+  font-size: 15px;
+}
+
+.header__selection {
+  font-size: 15px;
 }
 
 .ArticleList__ul {
@@ -25,11 +38,16 @@
 }
 
 .ArticleSummary__li {
-  border: 2px black solid;
   display: grid;
-  grid-template-columns: 4fr 1fr;
-  grid-template-rows: 60px 1fr 2fr 1fr;
+  grid-template-columns: 4fr;
+  grid-template-rows: 35px 1fr 80px 35px;
   height: fit-content;
+  border: solid 2px #272838;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #011c27;
 }
 
 .ArticleSummary__author {
@@ -37,36 +55,68 @@
   grid-row: 1;
   text-align: left;
   margin: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
 }
 
 .ArticleSumary__title {
   grid-column: 1;
   grid-row: 2;
   text-align: left;
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #f9c785;
+  border-radius: 10px;
+  font-size: 30px;
+  color: black;
+  padding: 10px;
+}
+
+.articlesumary__title:link {
+  text-decoration: none;
 }
 
 .ArticleSummary__preview {
   grid-column: 1;
   grid-row: 3;
-  text-align: left;
+  text-align: center;
+  vertical-align: middle;
   margin: 5px;
+  background-color: #f9c785;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 18px;
+  font-style: italic;
 }
 
 .ArticleSummary__linkToArticle {
   grid-column: 1;
   grid-row: 4;
   text-align: left;
-  margin: 5px;
   font-size: 15px;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #ead7d7;
+  border-radius: 10px;
+}
+
+.LinktoArticle__text {
+  margin: 5px;
 }
 
 .ArticleSummary__comment_count {
   grid-column: 2;
-  grid-row: 4;
+  grid-row: 5;
   text-align: right;
   margin: 5px;
-  font-size: 15px;
+  font-size: 10px;
 }
 
 @media only screen and (min-width: 768px) {

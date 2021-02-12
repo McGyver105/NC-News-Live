@@ -48,6 +48,7 @@ export const fetchCommentsForArticle = (article_id) => {
 }
 
 export const postComment = (id, user, commentStr) => {
+    console.log(id, user, commentStr)
     const errMsg = 'cannot submit an empty comment';
     if (commentStr === '') {
         return Promise.reject(errMsg);

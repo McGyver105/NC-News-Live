@@ -61,7 +61,7 @@ class PostCommentToArticle extends Component {
                     { user === '' ? <></> :
                         <button
                         className="PostCommentToArticle__postButton"
-                        onClick={this.handleClick}>Have your say. Click me.
+                        onClick={this.handleClick}>Click to share your opinion
                         </button>}
                     {hideInput || user === '' ? <></> :
                         <form
@@ -77,6 +77,7 @@ class PostCommentToArticle extends Component {
                                 ></textarea>
                             </label>
                             <button
+                                className="PostComment__submitButton"
                                 disabled={posting}>
                                 Submit
                                 </button>
@@ -86,15 +87,19 @@ class PostCommentToArticle extends Component {
                     {
                     posting ?
                         <>
-                            <p>posting comment</p>
+                            <LoadingScreen/>
                         </>
                             :
                         <></>
                     }
-                    <p>User comments</p>
+                    <p className="PostComment__Title">
+                        User comments
+                        </p>
                     <>
-                        <button onClick={this.showHideButton}>
-                            Show all comments
+                        <button
+                            className="PostComment__ShowButton"
+                            onClick={this.showHideButton}>
+                            Click me
                             </button>
                         {hideComments ? <></> :
                             <>

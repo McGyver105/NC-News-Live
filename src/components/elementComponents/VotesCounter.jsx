@@ -27,7 +27,7 @@ class CommentsCounter extends Component {
         const { startingVotes, voteChange, user } = this.state;
         return (
             <>
-                <p>Votes: {startingVotes + voteChange}</p>
+                <p className="VoteCounter__Likes">Likes: {startingVotes + voteChange}</p>
                 {
                     user === '' ? <></> :
                     <>
@@ -50,7 +50,7 @@ class CommentsCounter extends Component {
                     })}
                     className="FullArticle__voteButton">
                     <img
-                    src="https://lh3.googleusercontent.com/gRvRUve9VoQLyKG5BICowvMGAHTsmsr8D66IXyQDPK05NE2p1wUDPwzOH64KDnDaPRM8=s180"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/400px-Question_mark_%28black%29.svg.png"
                     alt="no comment"
                     className="FullArticle__Thumb" /></button>
                 <button
