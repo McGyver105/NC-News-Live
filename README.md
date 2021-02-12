@@ -1,10 +1,10 @@
-## Introduction
+# Introduction
 
 Contained within this repo is the frontend project for NC News St. This a work in progress as development has only just started.
 All data requests will be made to the previously created Backend hosted on Heroku at the link below:
 https://nc-news-project-st.herokuapp.com/api/
 
-# Starting the app
+## Starting the app
 
 Initially this app has been coded to start with you logged in as 'jessjelly', one of the registered users.
 If you want to use another profile, please log in using one of the following users:
@@ -24,7 +24,7 @@ Pagination
 Topic creation
 Posting of articles
 
-# Github
+## Github
 
 If you want to view the code, feel free to visit the Github pages for this project
 https://github.com/McGyver105/NC-News-St-Frontend
