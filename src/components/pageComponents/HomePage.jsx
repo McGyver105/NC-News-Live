@@ -3,7 +3,7 @@ import ArticleListPage from './ArticleListPage';
 import ListOfTopics from '../elementComponents/ListOfTopics';
 import '../../Frontpage.css';
 
-const HomePage = () => {
+const HomePage = (props) => {
     return (
         <>
             <div className="homepage">

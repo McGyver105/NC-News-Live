@@ -12,7 +12,7 @@ class SingleArticlePage extends Component {
         article: {},
         article_id: this.props.article_id,
         isLoading: true,
-        user: 'name',
+        user: this.props.user,
         errorFound: {found: false, msg: '', status: ''}
     }
 

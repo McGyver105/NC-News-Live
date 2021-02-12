@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Title = ({ user, userLogin, userLogout, handleType, usernameInput = '', loggedIn }) => {
+const Title = ({ user, userLogin, userLogout, handleType, usernameInput = '', loggedIn, invalidUsername }) => {
     return (
         <> {loggedIn ?
             <>
@@ -25,6 +25,12 @@ const Title = ({ user, userLogin, userLogout, handleType, usernameInput = '', lo
                     </input>
                     <button>Login</button>
                 </form>
+                { invalidUsername
+                    ?<>
+                    <p>usernames must only contain letters (optionally followed by numbers)</p>
+                    </>
+                    :
+                    <></>}
             </>
         }
         </>

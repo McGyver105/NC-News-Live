@@ -17,12 +17,20 @@ class CommentsCounter extends Component {
         this.fetchVotes();
     }
 
+    componentDidUpdate (prevProps) {
+        if (prevProps !== this.props) {
+            this.fetchVotes()
+        }
+    }
+
     render () {
         const { startingVotes, voteChange, user } = this.state;
         return (
             <>
                 <p>Votes: {startingVotes + voteChange}</p>
-                
+                {
+                    user === '' ? <></> :
+                    <>
                     <button
                     disabled={voteChange === 1}
                     onClick={(() => {
@@ -56,7 +64,9 @@ class CommentsCounter extends Component {
                     alt="thumbs down"
                     className="FullArticle__Thumb" />
                             </button>
-                    </>
+                        </>
+                }
+            </>
         );
     }
 

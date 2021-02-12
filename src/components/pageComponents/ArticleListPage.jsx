@@ -16,7 +16,7 @@ class ArticleList extends Component {
         sorting: false,
         filter: this.props.filter,
         filtering: this.props.filtering,
-        errorFound: {found: false, msg: '', status: ''}
+        errorFound: { found: false, msg: '', status: '' }
     }
 
     componentDidMount () {
