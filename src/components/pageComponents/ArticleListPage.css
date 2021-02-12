@@ -21,6 +21,10 @@
   font-style: italic;
   margin-top: 20px;
   margin-bottom: 12px;
+  margin-left: 10px;
+  background-color: #272838;
+  color: white;
+  border-radius: 10px;
 }
 
 .header__dropdownlist {
@@ -60,7 +64,7 @@
   color: white;
 }
 
-.ArticleSumary__title {
+.ArticleSummary__title {
   grid-column: 1;
   grid-row: 2;
   text-align: left;

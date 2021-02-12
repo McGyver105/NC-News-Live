@@ -10,7 +10,7 @@ const ArticleSummary = (props) => {
         <li className="ArticleSummary__li">
             <p className="ArticleSummary__author">Author: {author}. {`Created: ${created_at.slice(0, 10)} at ${created_at.slice(11, 19)}`}</p>
             <Link to={`/nc-news-st/articles/${article_id}`}>
-                <p className="ArticleSumary__title">{title}</p>
+                <p className="ArticleSummary__title">{title}</p>
             </Link>
             <p className="ArticleSummary__preview">{preview}</p>
             <Link to={`/nc-news-st/articles/${article_id}`} className="ArticleSummary__linkToArticle">

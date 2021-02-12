@@ -14,7 +14,7 @@ const SingleComment = ({
     return (
         <section className="SingleArticle__comment">
             <p
-                className="SingleComment__author">Author: {author} at {created_at}</p>
+                className="SingleComment__author">Author: {author} at {`Created: ${created_at.slice(0, 10)} at ${created_at.slice(11, 19)}`}</p>
             <p className="SingleComment__body">{body}</p>
             <VotesCounter
                 type={"comments"}
