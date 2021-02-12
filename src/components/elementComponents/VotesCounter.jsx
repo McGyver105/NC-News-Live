@@ -9,7 +9,8 @@ class CommentsCounter extends Component {
         voteChange: 0,
         likeDisabled: false,
         dislikeDisabled: false,
-        type: this.props.type
+        type: this.props.type,
+        user: this.props.user
     }
 
     componentDidMount () {
@@ -17,11 +18,12 @@ class CommentsCounter extends Component {
     }
 
     render () {
-        const { startingVotes, voteChange } = this.state;
+        const { startingVotes, voteChange, user } = this.state;
         return (
             <>
                 <p>Votes: {startingVotes + voteChange}</p>
-                <button
+                
+                    <button
                     disabled={voteChange === 1}
                     onClick={(() => {
                         this.handleClick(1)
@@ -53,8 +55,8 @@ class CommentsCounter extends Component {
                     src="https://cdn0.iconfinder.com/data/icons/communication-183/80/thumbs-down-512.png"
                     alt="thumbs down"
                     className="FullArticle__Thumb" />
-                </button>
-            </>
+                            </button>
+                    </>
         );
     }
 

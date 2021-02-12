@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api'
 import LoadingScreen from './LoadingScreen';
 import SingleComment from './SingleComment';
+import '../pageComponents/SingleArticlePage.css'
 
 class PostCommentToArticle extends Component {
 
@@ -42,19 +43,43 @@ class PostCommentToArticle extends Component {
     }
 
     render () {
-        const { hideInput, isLoading, comments, hideComments, user, posting, errorFound: { found, msg } } = this.state;
+        const {
+            hideInput,
+            isLoading,
+            comments,
+            hideComments,
+            user,
+            posting,
+            userComment,
+            errorFound: {
+                found,
+                msg }
+        } = this.state;
         return (
             <>{isLoading ? <LoadingScreen/> :
                 <>
-                    <button onClick={this.handleClick}>Click to post comment</button>
-                    {hideInput ? <></> :
-                        <form onSubmit={this.handleSubmit}>
+                    { user === '' ? <></> :
+                        <button
+                        className="PostCommentToArticle__postButton"
+                        onClick={this.handleClick}>Have your say. Click me.
+                        </button>}
+                    {hideInput || user === '' ? <></> :
+                        <form
+                            className="PostCommentToArticle__submitForm"
+                            onSubmit={this.handleSubmit}>
                             <label>
-                                <input onChange={this.handleTyping}
-                                    type="text" placeholder="tell us what you think"
-                                ></input>
+                                <textarea
+                                    className="PostCommentToArticle__submitInput"
+                                    onChange={this.handleTyping}
+                                    type="text"
+                                    placeholder="tell us what you think"
+                                    value={userComment}
+                                ></textarea>
                             </label>
-                            <button>Submit</button>
+                            <button
+                                disabled={posting}>
+                                Submit
+                                </button>
                             {found ? <p>{msg}</p> : <></>}
                         </form>
                     }
@@ -104,7 +129,9 @@ class PostCommentToArticle extends Component {
 
     handleClick = () => {
         this.setState((current) => {
-            return { hideInput: !current.hideInput };
+            return {
+                hideInput: !current.hideInput
+            };
         });
     }
 
@@ -112,25 +139,39 @@ class PostCommentToArticle extends Component {
         const { id, user, userComment } = this.state;
         event.preventDefault();
         this.setState(() => {
-            return {posting: true}
-        })
+            return {
+                posting: true
+            };
+        });
         api.postComment(id, user, userComment)
             .then(() => {
                 this.setState(() => {
-                    return { posted: true, posting : false, hideComments: false };
+                    return {
+                        posted: true,
+                        posting: false,
+                        hideComments: false,
+                        userComment: ''
+                    };
                 });
             })
             .catch((err) => {
                 this.setState(() => {
-                    return { errorFound: { found: true, msg: err } };
+                    return {
+                        errorFound: {
+                            found: true,
+                            msg: err
+                        }
+                    };
                 });
             });
     }
 
     handleTyping = (event) => {
         this.setState(() => {
-            return {userComment: event.target.value}
-        })
+            return {
+                userComment: event.target.value
+            };
+        });
     }
 
     handleDelete = (comment_id) => {
@@ -142,7 +183,9 @@ class PostCommentToArticle extends Component {
     
     showHideButton = () => {
         this.setState(({hideComments}) => {
-            return { hideComments: !hideComments };
+            return {
+                hideComments: !hideComments
+            };
         });
     }
 }

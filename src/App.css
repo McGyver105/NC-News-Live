@@ -1,3 +1,8 @@
+body {
+  background-color: #e2d4b7;
+  background-attachment: fixed;
+}
+
 .App {
   text-align: center;
   border: 2px pink solid;
@@ -19,6 +24,11 @@
 
 .App__name {
   grid-column: 1;
+  background-color: #519872;
+  height: 50px;
+  padding: 10px;
+  border: #222222 2px solid;
+  border-radius: 10px;
 }
 
 .App__user {
@@ -26,11 +36,11 @@
   background-color: purple;
   color: white;
   font-size: 35px;
-  margin: 0px;
+  padding: 10px;
   border-radius: 35px;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 40px;
   margin-right: 10px;
 }

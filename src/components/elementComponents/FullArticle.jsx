@@ -23,23 +23,26 @@ class FullArticle extends Component {
     }
 
     render () {
-        const { article, isLoading } = this.state;
+        const { article, isLoading, user } = this.state;
         return (
             <>
                 {isLoading ? <LoadingScreen /> :
                     <>
-                        <p>Author: {article.author}</p>
-                        <p>{article.body}</p>
-                        <section
-                        className="FullArticle__votesCounter">
-                        <VotesCounter
-                            type={"articles"}
-                            votes={article.votes}
-                            id={article.article_id}
-                        />
-                        </section>
+                        <main className="FullArticle__mainArticle">
+                            <p>Author: {article.author}</p>
+                            <p>{article.body}</p>
+                            <section
+                                className="FullArticle__votesCounter">
+                                <VotesCounter
+                                    type={"articles"}
+                                    votes={article.votes}
+                                    id={article.article_id}
+                                    user={user}
+                                />
+                            </section>
+                        </main>
                     </>}
-                </>
+            </>
         );
     }
 }

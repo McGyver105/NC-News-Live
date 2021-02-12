@@ -18,7 +18,9 @@ const SingleComment = ({
             <VotesCounter
                 type={"comments"}
                 votes={votes}
-                id={comment_id} />
+                id={comment_id}
+                user={user}
+            />
             { author === user ?
                 <button onClick={() => {
                     handleDelete(comment_id);
