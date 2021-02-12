@@ -9,6 +9,13 @@
   height: 40px;
 }
 
+.nyan__Loading {
+  background-color: #011c27;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+}
+
 h4 {
   background-color: white;
   margin: 10px;

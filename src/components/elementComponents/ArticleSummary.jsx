@@ -3,7 +3,7 @@ import React from 'react';
 import '../../App.css'
 
 const ArticleSummary = (props) => {
-    const { author, created_at, title, body, comment_count, article_id } = props.article
+    const { author, created_at, title, body, article_id } = props.article
     let preview = body;
     if (body.length > 70) preview = body.slice(0, 70) + '...';
     return (

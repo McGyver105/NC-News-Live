@@ -42,7 +42,7 @@ class App extends Component {
           loggedIn={loggedIn}
           invalidUsername={invalidUsername}
         />
-        <Router>
+        <Router primary={false}>
           <HomePage
             path="/" />
           <HomePage
