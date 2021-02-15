@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/NC-News-ST-Frontend/static/css/main.c1d0b561.chunk.css",
+    "main.js": "/NC-News-ST-Frontend/static/js/main.39a79e1c.chunk.js",
+    "main.js.map": "/NC-News-ST-Frontend/static/js/main.39a79e1c.chunk.js.map",
+    "runtime-main.js": "/NC-News-ST-Frontend/static/js/runtime-main.ef56fdba.js",
+    "runtime-main.js.map": "/NC-News-ST-Frontend/static/js/runtime-main.ef56fdba.js.map",
+    "static/js/2.a50ff32f.chunk.js": "/NC-News-ST-Frontend/static/js/2.a50ff32f.chunk.js",
+    "static/js/2.a50ff32f.chunk.js.map": "/NC-News-ST-Frontend/static/js/2.a50ff32f.chunk.js.map",
+    "index.html": "/NC-News-ST-Frontend/index.html",
+    "static/css/main.c1d0b561.chunk.css.map": "/NC-News-ST-Frontend/static/css/main.c1d0b561.chunk.css.map",
+    "static/js/2.a50ff32f.chunk.js.LICENSE.txt": "/NC-News-ST-Frontend/static/js/2.a50ff32f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ef56fdba.js",
+    "static/js/2.a50ff32f.chunk.js",
+    "static/css/main.c1d0b561.chunk.css",
+    "static/js/main.39a79e1c.chunk.js"
+  ]
+}
