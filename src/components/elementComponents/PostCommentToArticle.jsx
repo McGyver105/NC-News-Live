@@ -7,9 +7,9 @@ import '../pageComponents/SingleArticlePage.css'
 class PostCommentToArticle extends Component {
 
     state = {
-        id: this.props.id,
-        user: this.props.user,
-        article: this.props.article,
+        id: '',
+        user: '',
+        article: null,
         hideInput: true,
         posted: false,
         posting: false,
@@ -21,7 +21,7 @@ class PostCommentToArticle extends Component {
     }
 
     componentDidMount () {
-        const { article_id } = this.state.article;
+        const { article: { article_id } } = this.props;
         api.fetchCommentsForArticle(article_id)
             .then((comments) => {
                 this.setState(() => {
@@ -32,7 +32,7 @@ class PostCommentToArticle extends Component {
 
     componentDidUpdate () {
         if (this.state.posted) {
-        const { article_id } = this.state.article;
+            const { article: { article_id } } = this.props;
             api.fetchCommentsForArticle(article_id)
                 .then((comments) => {
                     this.setState(() => {
@@ -48,13 +48,13 @@ class PostCommentToArticle extends Component {
             isLoading,
             comments,
             hideComments,
-            user,
             posting,
             userComment,
             errorFound: {
                 found,
                 msg }
         } = this.state;
+        const { user } = this.props;
         return (
             <>{isLoading ? <LoadingScreen/> :
                 <>
@@ -141,7 +141,8 @@ class PostCommentToArticle extends Component {
     }
 
     handleSubmit = (event) => {
-        const { id, user, userComment } = this.state;
+        const { userComment } = this.state;
+        const { id, user } = this.props;
         event.preventDefault();
         this.setState(() => {
             return {

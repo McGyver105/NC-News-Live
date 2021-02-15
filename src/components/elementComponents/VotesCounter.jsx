@@ -9,8 +9,8 @@ class CommentsCounter extends Component {
         voteChange: 0,
         likeDisabled: false,
         dislikeDisabled: false,
-        type: this.props.type,
-        user: this.props.user
+        type: '',
+        user: ''
     }
 
     componentDidMount () {
@@ -24,7 +24,8 @@ class CommentsCounter extends Component {
     }
 
     render () {
-        const { startingVotes, voteChange, user } = this.state;
+        const { startingVotes, voteChange } = this.state;
+        const { user } = this.props;
         return (
             <>
                 <p className="VoteCounter__Likes">Likes: {startingVotes + voteChange}</p>
@@ -39,7 +40,7 @@ class CommentsCounter extends Component {
                     className="FullArticle__voteButton"
                     >
                     <img
-                    src="https://www.flaticon.com/svg/vstatic/svg/25/25297.svg?token=exp=1612889456~hmac=7552dab4e95159ce74f976be131e8813"
+                    src="https://www.flaticon.com/svg/vstatic/svg/25/25297.svg?token=exp=1613379356~hmac=29d458643fc5cd303a8b8efe23dd65d8"
                     alt="thumbs up"
                     className="FullArticle__Thumb" />   
                 </button>
@@ -71,7 +72,8 @@ class CommentsCounter extends Component {
     }
 
     handleClick = (voteIncrement) => {
-        const { id, voteChange, type } = this.state;
+        const { id, voteChange } = this.state;
+        const { type } = this.props;
         let votes = voteIncrement;
         if (voteChange >= 1 && voteIncrement === 1) votes = 0;
         if (voteChange <= -1 && voteIncrement === -1) votes = 0;

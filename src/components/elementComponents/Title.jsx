@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Title = ({ user, userLogin, userLogout, handleType, usernameInput = '', loggedIn, invalidUsername }) => {
+const Title = ({ user, userLogin, userLogout, handleType, usernameInput = '', loggedIn }) => {
     return (
         <> {loggedIn ?
             <>

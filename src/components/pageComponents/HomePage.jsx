@@ -8,7 +8,7 @@ const HomePage = (props) => {
         <>
             <div className="homepage">
                 <ListOfTopics />
-                <ArticleListPage />
+                <ArticleListPage filtering={false}/>
             </div>
         </>
     );

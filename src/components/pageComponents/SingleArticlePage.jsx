@@ -10,9 +10,9 @@ class SingleArticlePage extends Component {
 
     state = {
         article: {},
-        article_id: this.props.article_id,
+        article_id: 0,
         isLoading: true,
-        user: this.props.user,
+        user: '',
         errorFound: {found: false, msg: '', status: ''}
     }
 
@@ -41,7 +41,8 @@ class SingleArticlePage extends Component {
             </>
             );
         }
-        const { article, user } = this.state;
+        const { article } = this.state;
+        const { user } = this.props;
         return (
             <>{
                 this.state.isLoading ? <LoadingScreen />

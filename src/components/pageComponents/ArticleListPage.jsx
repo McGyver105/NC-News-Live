@@ -14,8 +14,8 @@ class ArticleList extends Component {
         isLoading: true,
         sort_by: 'created_at',
         sorting: false,
-        filter: this.props.filter,
-        filtering: this.props.filtering,
+        filter: '',
+        filtering: false,
         errorFound: { found: false, msg: '', status: '' }
     }
 
@@ -29,7 +29,8 @@ class ArticleList extends Component {
     }
 
     componentDidUpdate () {
-        const { sort_by, filter, sorting, filtering } = this.state;
+        const { sort_by, sorting, filtering } = this.state;
+        const { filter } = this.props;
         if (sorting) {
             api.fetchSortedArticles(sort_by, filter)
                 .then((articles) => {

@@ -8,13 +8,15 @@ import VotesCounter from './VotesCounter';
 class FullArticle extends Component {
 
     state = {
-        id: this.props.id,
-        user: this.props.user,
-        isLoading: true
+        id: '',
+        user: '',
+        isLoading: true,
+        article: null
     }
 
     componentDidMount () {
-        api.fetchOneArticle(this.state.id)
+        const { id } = this.props;
+        api.fetchOneArticle(id)
             .then((article) => {
                 this.setState(() => {
                     return { "article": article, isLoading: false };
@@ -23,7 +25,8 @@ class FullArticle extends Component {
     }
 
     render () {
-        const { article, isLoading, user } = this.state;
+        const { article, isLoading } = this.state;
+        const { user } = this.props;
         return (
             <>
                 {isLoading ? <LoadingScreen /> :
