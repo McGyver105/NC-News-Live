@@ -45,11 +45,11 @@ class App extends Component {
           <HomePage
             path="/" />
           <HomePage
-            path="/nc-news-st" />
+            path="NC-News-Live" />
           <TopicsPage
-            path="/nc-news-st/topics/:topic"/>
+            path="NC-News-Live/topics/:topic"/>
           <SingleArticlePage
-            path="nc-news-st/articles/:article_id"
+            path="NC-News-Live/articles/:article_id"
             user={user} />
           <ErrorHandler default />
         </Router>
