@@ -5,7 +5,7 @@ import ArticleListPage from './ArticleListPage';
 const TopicsPage = (props) => {
     return (
         <>
-            <Link to="/nc-news-st">
+            <Link to="/nc-news-live">
                 <h4>Go back</h4>
             </Link>
             <p className="TopicsPage__ChosenPage">Articles about: {props.topic}!

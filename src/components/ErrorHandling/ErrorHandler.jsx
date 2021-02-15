@@ -8,7 +8,7 @@ const ErrorHandler = ({msg = 'wrong path', status = 404}) => {
             {
             msg === 'wrong path' ?
             <>
-                <Link to="/nc-news-st">
+                <Link to="/nc-news-live">
                     <h4>Go Back</h4>
                 </Link>
                 <h2>Sorry, we couldn't find what you're looking for</h2>

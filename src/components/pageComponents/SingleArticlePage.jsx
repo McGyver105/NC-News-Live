@@ -33,7 +33,7 @@ class SingleArticlePage extends Component {
         const { msg, status } = this.state.errorFound;
         if (this.state.errorFound.found) {
             return (<>
-                <Link to="/nc-news-st">
+                <Link to="/nc-news-live">
                     <h4>Go Back</h4>
                 </Link>
                 <ErrorHandler msg={msg} status={status} />
@@ -47,7 +47,7 @@ class SingleArticlePage extends Component {
                 this.state.isLoading ? <LoadingScreen />
                     :
                     <>
-                        <Link to="/nc-news-st">
+                        <Link to="/nc-news-live">
                             <h4>Go Back</h4>
                         </Link>
                         <p className="SingleArticlePage__title">
