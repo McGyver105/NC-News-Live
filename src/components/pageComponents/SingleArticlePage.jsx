@@ -1,16 +1,15 @@
 import { Link } from '@reach/router';
 import React, { Component } from 'react';
-import FullArticle from '../elementComponents/FullArticle';
 import LoadingScreen from '../elementComponents/LoadingScreen';
 import * as api from '../api'
 import PostCommentToArticle from '../elementComponents/PostCommentToArticle';
 import ErrorHandler from '../ErrorHandling/ErrorHandler'
+import FullArticle from '../elementComponents/FullArticle'
 
 class SingleArticlePage extends Component {
 
     state = {
         article: {},
-        article_id: 0,
         isLoading: true,
         user: '',
         errorFound: {found: false, msg: '', status: ''}
@@ -55,12 +54,13 @@ class SingleArticlePage extends Component {
                             Article: {article.title}
                         </p>
                         <FullArticle
-                            id={this.props.article_id}
+                            id={article.article_id}
                             user={user}
+                            article={article}
                         />
                         <section className="SingleArticle__CommentsSection">
                         <PostCommentToArticle
-                            id={this.props.article_id}
+                            id={article.article_id}
                             user={user}
                             article={article}/>
                         </section>

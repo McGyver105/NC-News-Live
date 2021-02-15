@@ -12,8 +12,8 @@ class App extends Component {
   state = {
     user: 'jessjelly',
     usernameInput: '',
-    loggedIn: true,
-    invalidUsername: false
+    invalidUsername: false,
+    savedUser: false
   }
   
   componentDidMount () {
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   render () {
-    const { user, usernameInput, loggedIn, invalidUsername } = this.state;
+    const { user, usernameInput, invalidUsername } = this.state;
     return (
       <div className="App">
         <Title
@@ -39,7 +39,6 @@ class App extends Component {
           userLogout={this.userLogout}
           handleType={this.handleType}
           usernameInput={usernameInput}
-          loggedIn={loggedIn}
           invalidUsername={invalidUsername}
         />
         <Router primary={false}>
@@ -73,8 +72,8 @@ class App extends Component {
         return { invalidUsername: true };
       });
     } else {
-      this.setState(() => {
-        return { user: usernameInput, usernameInput: '', loggedIn: true };
+      this.setState((current) => {
+        return { user: current.usernameInput, usernameInput: '' };
       }, () => {
           localStorage.setItem('currentUser', JSON.stringify(this.state))
           this.setState(() => {
@@ -86,7 +85,7 @@ class App extends Component {
 
   userLogout = () => {
     this.setState(() => {
-      return { user: '', loggedIn: false };
+      return { user: '' };
     }, () => {
       localStorage.setItem('currentUser', JSON.stringify(this.state))
       this.setState(() => {

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Title = ({ user, userLogin, userLogout, handleType, usernameInput = '', loggedIn }) => {
+const Title = ({ user, userLogin, userLogout, handleType, usernameInput = '' }) => {
     return (
-        <> {loggedIn ?
+        <> {user !== '' ?
             <>
                 <header className="App__title">
                     <h1 className="App__name">NC News St</h1>

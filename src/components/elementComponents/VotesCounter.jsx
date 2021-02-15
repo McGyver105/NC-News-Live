@@ -40,7 +40,7 @@ class CommentsCounter extends Component {
                     className="FullArticle__voteButton"
                     >
                     <img
-                    src="https://www.flaticon.com/svg/vstatic/svg/25/25297.svg?token=exp=1613379356~hmac=29d458643fc5cd303a8b8efe23dd65d8"
+                    src="https://icons-for-free.com/iconfiles/png/512/thumbs+thumbs+up+up+vote+icon-1320184637569349118.png"
                     alt="thumbs up"
                     className="FullArticle__Thumb" />   
                 </button>

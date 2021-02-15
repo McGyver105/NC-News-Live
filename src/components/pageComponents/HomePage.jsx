@@ -7,8 +7,12 @@ const HomePage = (props) => {
     return (
         <>
             <div className="homepage">
+                <div className="Homepage__ListOfTopicsHolder">
                 <ListOfTopics />
+                </div>
+                <div className="Homepage__ArticleListPageHolder">
                 <ArticleListPage filtering={false}/>
+                </div>
             </div>
         </>
     );
